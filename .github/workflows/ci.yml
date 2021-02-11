@@ -5,26 +5,16 @@ on: [push]
 
 jobs:
 
-  test:
+  molecule:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
-          architecture: 'x64'
+          path: "${{ github.repository }}"
 
-      - name: Install dependencies
-        run: |
-          sudo apt install docker
-          python -m pip install --upgrade pip
-          pip install ansible==2.10.* ansible-lint==5.0.*
-          pip install molecule molecule-docker
-
-      - name: test docker role using Molecule
-        run: molecule test
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: test
