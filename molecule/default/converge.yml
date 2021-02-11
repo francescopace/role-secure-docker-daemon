@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include role-secure-docker-daemon"
+      include_role:
+        name: "role-secure-docker-daemon"
