@@ -12,3 +12,4 @@ dds_client_cert_path: ~/.docker
 dds_env_shell_path: "~"  
 dds_install_shell: yes
 dds_restart_docker: no 
+dds_clean_temp_dir: no
